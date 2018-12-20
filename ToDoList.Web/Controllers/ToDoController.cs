@@ -64,6 +64,11 @@ namespace ToDoList.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ToDoCreateViewModel vm)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
             var item = Mapper.Map<Item>(vm);
             var user = await _uow.Users.GetById(CurrentUser.Id);
 
@@ -77,6 +82,11 @@ namespace ToDoList.Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(ToDoEditViewModel vm)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
             await _uow.Items.Update(vm.Id, vm.Description);
             await _uow.SaveChanges();
 
