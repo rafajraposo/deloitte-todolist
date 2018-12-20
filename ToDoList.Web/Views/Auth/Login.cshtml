@@ -1,0 +1,30 @@
+﻿@model AuthLoginViewModel
+
+<h2>Login</h2> 
+
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-sm-4">
+
+            <label>@Html.DisplayNameFor(x => x.Username)</label>
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Username)
+            </div>
+
+            <label>@Html.DisplayNameFor(x => x.Password)</label>
+            <div class="form-group">
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+
+        </div>
+    }
+
+</div>
