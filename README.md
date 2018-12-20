@@ -7,6 +7,7 @@
 - SQL Server LocalDB
 - OWIN
 - Ninject
+- AutoMapper
 - JQuery Validation
 - bootstrap
 
